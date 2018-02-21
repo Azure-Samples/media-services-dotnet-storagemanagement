@@ -1,57 +1,14 @@
-# Project Name
+# Media Services Storage Management Sample
 
-(short, 1-3 sentenced, description of the project)
+This sample shows how to manage Azure Storage accounts attached to
+an Azure Media Services account.
 
 ## Features
 
-This project framework provides the following features:
+* Synchronize storage account keys for a Media Servics account
+* List Storage accounts
+* List Media Services accounts
+* List Media Services attached storage accounts
+* Attach a storage account to a Media Services account
+* Detach a storage account from a Media Services account
 
-* Feature 1
-* Feature 2
-* ...
-
-## Getting Started
-
-### Prerequisites
-
-(ideally very short, if any)
-
-- OS
-- Library version
-- ...
-
-### Installation
-
-(ideally very short)
-
-- npm install [package name]
-- mvn install
-- ...
-
-### Quickstart
-(Add steps to get up and running quickly)
-
-1. git clone [repository clone url]
-2. cd [respository name]
-3. ...
-
-
-## Demo
-
-A demo app is included to show how to use the project.
-
-To run the demo, follow these steps:
-
-(Add steps to start up the demo)
-
-1.
-2.
-3.
-
-## Resources
-
-(Any additional resources or related projects)
-
-- Link to supporting information
-- Link to similar sample
-- ...
