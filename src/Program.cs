@@ -215,7 +215,7 @@ namespace MediaServicesStorageManagement
 
             foreach (var storageAccount in mediaServicesAccount.StorageAccounts)
             {
-                Console.WriteLine(storageAccount.Id);
+                Console.WriteLine("{0}, isPrimary = {1}", storageAccount.Id, storageAccount.IsPrimary);
             }
         }
     }
@@ -269,27 +269,6 @@ namespace MediaServicesStorageManagement
     }
 
     /// <summary>
-    /// A command to delete an Azure Storage account.
-    /// </summary>
-    internal class DeleteStorageAccountCommand : Command
-    {
-        public override string Name => "DeleteStorageAccount";
-        public override string[] Parameters => new[] { "resourceGroup", "storageAccountName" };
-
-        public override void Run(string[] parameters)
-        {
-            var resourceGroup = parameters[0];
-            var storageAccountName = parameters[1];
-
-            var storageManagementClient = CreateStorageManagementClient();
-
-            storageManagementClient.StorageAccounts.Delete(
-                resourceGroup,
-                storageAccountName);
-        }
-    }
-
-    /// <summary>
     /// A command to attach an Azure Storage account to a Media Services account.
     /// </summary>
     internal class AttachStorageAccountCommand : Command
@@ -311,7 +290,8 @@ namespace MediaServicesStorageManagement
             {
                 new Microsoft.Azure.Management.Media.Models.StorageAccount
                 {
-                    Id = storageAccountId
+                    Id = storageAccountId,
+                    IsPrimary = false
                 }
             }).ToArray();
 
@@ -342,7 +322,7 @@ namespace MediaServicesStorageManagement
 
             var account = mediaServicesManagementClient.MediaService.Get(resourceGroup, mediaServicesAccountName);
 
-            var updatedStorageAccounts = account.StorageAccounts.Where(x => x.Id != storageAccountId).ToArray();
+            var updatedStorageAccounts = account.StorageAccounts.Where(x => string.Compare(x.Id, storageAccountId, StringComparison.OrdinalIgnoreCase) != 0).ToArray();
 
             var updatedAccount = new MediaService
             {
