@@ -1,3 +1,14 @@
+---
+page_type: sample
+languages:
+- csharp
+products:
+- azure
+description: "This sample shows how to manage Azure Storage accounts attached to
+an Azure Media Services account."
+urlFragment: media-services-dotnet-storagemanagement
+---
+
 # Media Services Storage Management Sample
 
 This sample shows how to manage Azure Storage accounts attached to
